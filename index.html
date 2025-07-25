@@ -39,27 +39,40 @@
         .report-embed-container {
             flex-grow: 1; /* Allows the container to take up available space */
             display: flex;
+            flex-direction: column; /* Stack embeds vertically */
             justify-content: center;
-            align-items: flex-start; /* Align embed to the top of its container */
-            padding: 10px; /* Padding around the content */
+            align-items: center; /* Center content horizontally */
+            padding: 20px; /* Padding around the content */
             width: 100%; /* Ensure container uses full width */
             box-sizing: border-box;
         }
 
-        .looker-report-embed {
+        .looker-report-embed,
+        .flourish-report-embed { /* Apply common styling to both embed types */
             width: 90%; /* Use a percentage for responsiveness */
-            max-width: 1000px; /* A common width for dashboards (e.g., 1000px wide) */
-            height: 400px; /* For a 16:9 aspect ratio (approx 1000/16 * 9) */
+            max-width: 1200px; /* Max width for consistency */
+            margin-bottom: 40px; /* Space between embeds */
             background-color: #F8F8F8; /* Background for the embed area */
             border: 2px dashed #AAA; /* Border for visual separation */
-            overflow: hidden; /* Hide any overflow from the iframe */
+            overflow: hidden; /* Hide any overflow */
             box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* A bit more pronounced shadow */
+        }
+
+        .looker-report-embed {
+            height: 500px; /* Specific height for Looker Studio embed */
         }
 
         .looker-report-embed iframe {
             width: 100%; /* Make the iframe fill its parent container */
             height: 100%; /* Make the iframe fill its parent container */
             border: 0; /* Remove iframe default border */
+        }
+
+        /* Styling for Flourish embed specific elements */
+        .flourish-embed {
+            width: 100%; /* Flourish div should fill its container */
+            height: auto; /* Let Flourish manage its height */
+            min-height: 400px; /* Ensure a minimum height for visibility */
         }
     </style>
 </head>
@@ -78,6 +91,14 @@
                     mozallowfullscreen
                     webkitallowfullscreen>
             </iframe>
+        </div>
+
+        <div class="flourish-report-embed">
+            <!-- Your Flourish Parliament Visualization will be embedded here -->
+            <div class="flourish-embed flourish-parliament" data-src="visualisation/24406607">
+                <script src="https://public.flourish.studio/resources/embed.js"></script>
+                <noscript><img src="https://public.flourish.studio/visualisation/24406607/thumbnail" width="100%" alt="parliament visualization" /></noscript>
+            </div>
         </div>
     </div>
 </body>
