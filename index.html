@@ -36,30 +36,30 @@
             font-weight: 700; /* Bold for a strong title */
         }
 
-        .report-placeholder-container {
+        .report-embed-container {
             flex-grow: 1; /* Allows the container to take up available space */
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Align placeholder to the top of its container */
+            align-items: flex-start; /* Align embed to the top of its container */
             padding: 20px; /* Padding around the content */
             width: 100%; /* Ensure container uses full width */
             box-sizing: border-box;
         }
 
-        .report-placeholder {
+        .looker-report-embed {
             width: 90%; /* Use a percentage for responsiveness */
             max-width: 1000px; /* A common width for dashboards (e.g., 1000px wide) */
             height: 562px; /* For a 16:9 aspect ratio (approx 1000/16 * 9) */
-            background-color: #F8F8F8;
-            border: 2px dashed #AAA;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #666;
-            font-size: 1.1em;
-            overflow: hidden;
+            background-color: #F8F8F8; /* Background for the embed area */
+            border: 2px dashed #AAA; /* Border for visual separation */
+            overflow: hidden; /* Hide any overflow from the iframe */
             box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* A bit more pronounced shadow */
+        }
+
+        .looker-report-embed iframe {
+            width: 100%; /* Make the iframe fill its parent container */
+            height: 100%; /* Make the iframe fill its parent container */
+            border: 0; /* Remove iframe default border */
         }
     </style>
 </head>
@@ -68,10 +68,17 @@
         <h1>Margin of Error - Netherlands General Elections 2025 Tracker</h1>
     </div>
 
-    <div class="report-placeholder-container">
-        <div class="report-placeholder">
-            <p>Your Power BI Report will go here!</p>
-            </div>
+    <div class="report-embed-container">
+        <div class="looker-report-embed">
+            <!-- Your Looker Studio Report will be embedded here -->
+            <iframe src="https://lookerstudio.google.com/embed/reporting/c136abbc-eb2d-4858-89de-f41bd2cb1027/page/0"
+                    frameborder="0"
+                    style="border:0;"
+                    allowfullscreen
+                    mozallowfullscreen
+                    webkitallowfullscreen>
+            </iframe>
+        </div>
     </div>
 </body>
 </html>
