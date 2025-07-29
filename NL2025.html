@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Margin of Error - Netherlands General Elections Tracker 2025</title>
+    <title>Margin of Error - Netherlands General Elections 2025 Tracker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -24,16 +24,40 @@
             width: 100%;
             background-color: #ADD8E6; /* Light Blue */
             color: #333; /* Darker text for contrast */
-            padding: 20px 0;
-            text-align: center;
+            padding: 20px; /* Padding around the header content */
+            text-align: left; /* Left align the title */
             box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* A subtle shadow for depth */
             margin-bottom: 20px; /* Space between header and content */
+            position: relative; /* Essential for absolute positioning of the button */
         }
 
         .header-bar h1 {
             margin: 0; /* Remove default h1 margin */
-            font-size: 2em; /* Adjust font size as needed */
+            font-size: 1.6em; /* Slightly smaller font size for the title */
             font-weight: 700; /* Bold for a strong title */
+            /* Removed flex-grow and padding-right as button is now absolute */
+        }
+
+        .back-button {
+            position: absolute; /* Position it relative to .header-bar */
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+            background-color: #4682B4; /* Steel Blue */
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            white-space: nowrap; /* Prevent button text from wrapping */
+            z-index: 10; /* Ensure it's above the title if there's any overlap */
+        }
+
+        .back-button:hover {
+            background-color: #3a6a96; /* Darker blue on hover */
+            transform: translateY(-2px);
         }
 
         .report-embed-container {
@@ -59,7 +83,11 @@
         }
 
         .looker-report-embed {
-            height: 500px; /* Specific height for Looker Studio embed */
+            height: 450px; /* Specific height for Looker Studio embed */
+            /* Ensure iframe fills this container */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .looker-report-embed iframe {
@@ -74,30 +102,51 @@
             height: auto; /* Let Flourish manage its height */
             min-height: 400px; /* Ensure a minimum height for visibility */
         }
+
+        /* Responsive adjustments for button and header */
+        @media (max-width: 600px) {
+            .header-bar {
+                flex-direction: column; /* Stack header items vertically */
+                align-items: flex-start; /* Align header items to the left */
+                padding-bottom: 10px; /* Adjust padding */
+                padding-right: 20px; /* Ensure right padding for small screens */
+            }
+            .header-bar h1 {
+                font-size: 1.4em; /* Even smaller on very small screens */
+                margin-bottom: 10px; /* Add space below title */
+            }
+            .back-button {
+                position: static; /* Make it flow with content */
+                margin: 0 auto 5px 0; /* Align right, add bottom margin */
+                display: block; /* Take full width */
+                width: fit-content; /* Adjust width to content */
+            }
+        }
     </style>
 </head>
 <body>
     <div class="header-bar">
         <h1>Margin of Error - Netherlands General Elections 2025 Tracker</h1>
+        <a href="index.html" class="back-button">Back to Index</a>
     </div>
 
     <div class="report-embed-container">
         <div class="looker-report-embed">
             <!-- Your Looker Studio Report will be embedded here -->
-            <iframe src="https://lookerstudio.google.com/embed/reporting/c136abbc-eb2d-4858-89de-f41bd2cb1027/page/OUUSF"
-                    frameborder="0"
-                    style="border:0;"
-                    allowfullscreen
-                    mozallowfullscreen
+            <iframe src="https://lookerstudio.google.com/embed/reporting/49c65345-e5f3-4f11-a6da-619bf5be911c/page/QGxSF" 
+                    frameborder="0" 
+                    style="border:0;" 
+                    allowfullscreen 
+                    mozallowfullscreen 
                     webkitallowfullscreen>
             </iframe>
         </div>
 
         <div class="flourish-report-embed">
             <!-- Your Flourish Parliament Visualization will be embedded here -->
-            <div class="flourish-embed flourish-parliament" data-src="visualisation/24406607">
+            <div class="flourish-embed flourish-parliament" data-src="visualisation/24443005">
                 <script src="https://public.flourish.studio/resources/embed.js"></script>
-                <noscript><img src="https://public.flourish.studio/visualisation/24406607/thumbnail" width="100%" alt="parliament visualization" /></noscript>
+                <noscript><img src="https://public.flourish.studio/visualisation/24443005/thumbnail" width="100%" alt="parliament visualization" /></noscript>
             </div>
         </div>
     </div>
