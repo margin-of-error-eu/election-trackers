@@ -24,16 +24,40 @@
             width: 100%;
             background-color: #ADD8E6; /* Light Blue */
             color: #333; /* Darker text for contrast */
-            padding: 20px 0;
-            text-align: center;
+            padding: 20px; /* Padding around the header content */
+            text-align: left; /* Left align the title */
             box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* A subtle shadow for depth */
             margin-bottom: 20px; /* Space between header and content */
+            position: relative; /* Essential for absolute positioning of the button */
         }
 
         .header-bar h1 {
             margin: 0; /* Remove default h1 margin */
-            font-size: 2em; /* Adjust font size as needed */
+            font-size: 1.6em; /* Slightly smaller font size for the title */
             font-weight: 700; /* Bold for a strong title */
+            /* Removed flex-grow and padding-right as button is now absolute */
+        }
+
+        .back-button {
+            position: absolute; /* Position it relative to .header-bar */
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+            background-color: #4682B4; /* Steel Blue */
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            white-space: nowrap; /* Prevent button text from wrapping */
+            z-index: 10; /* Ensure it's above the title if there's any overlap */
+        }
+
+        .back-button:hover {
+            background-color: #3a6a96; /* Darker blue on hover */
+            transform: translateY(-2px);
         }
 
         .report-embed-container {
@@ -78,17 +102,38 @@
             height: auto; /* Let Flourish manage its height */
             min-height: 400px; /* Ensure a minimum height for visibility */
         }
+
+        /* Responsive adjustments for button and header */
+        @media (max-width: 600px) {
+            .header-bar {
+                flex-direction: column; /* Stack header items vertically */
+                align-items: flex-start; /* Align header items to the left */
+                padding-bottom: 10px; /* Adjust padding */
+                padding-right: 20px; /* Ensure right padding for small screens */
+            }
+            .header-bar h1 {
+                font-size: 1.4em; /* Even smaller on very small screens */
+                margin-bottom: 10px; /* Add space below title */
+            }
+            .back-button {
+                position: static; /* Make it flow with content */
+                margin: 0 auto 5px 0; /* Align right, add bottom margin */
+                display: block; /* Take full width */
+                width: fit-content; /* Adjust width to content */
+            }
+        }
     </style>
 </head>
 <body>
     <div class="header-bar">
         <h1>Margin of Error - Hungary Parliamentary Elections 2026 Tracker</h1>
+        <a href="index.html" class="back-button">Back to Index</a>
     </div>
 
     <div class="report-embed-container">
         <div class="looker-report-embed">
             <!-- Your Looker Studio Report will be embedded here -->
-            <iframe width="600" height="400" src="https://lookerstudio.google.com/embed/reporting/49c65345-e5f3-4f11-a6da-619bf5be911c/page/QGxSF" 
+            <iframe src="https://lookerstudio.google.com/embed/reporting/49c65345-e5f3-4f11-a6da-619bf5be911c/page/QGxSF" 
                     frameborder="0" 
                     style="border:0;" 
                     allowfullscreen 
