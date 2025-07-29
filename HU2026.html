@@ -56,10 +56,15 @@
             border: 2px dashed #AAA; /* Border for visual separation */
             overflow: hidden; /* Hide any overflow */
             box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* A bit more pronounced shadow */
+            /* Removed flex centering from previous attempt, as iframe will fill */
         }
 
         .looker-report-embed {
             height: 500px; /* Specific height for Looker Studio embed */
+            /* Ensure iframe fills this container */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .looker-report-embed iframe {
@@ -84,11 +89,11 @@
     <div class="report-embed-container">
         <div class="looker-report-embed">
             <!-- Your Looker Studio Report will be embedded here -->
-            <iframe src="https://lookerstudio.google.com/reporting/49c65345-e5f3-4f11-a6da-619bf5be911c"
-                    frameborder="0"
-                    style="border:0;"
-                    allowfullscreen
-                    mozallowfullscreen
+            <iframe width="600" height="450" src="https://lookerstudio.google.com/embed/reporting/49c65345-e5f3-4f11-a6da-619bf5be911c/page/QGxSF" 
+                    frameborder="0" 
+                    style="border:0;" 
+                    allowfullscreen 
+                    mozallowfullscreen 
                     webkitallowfullscreen>
             </iframe>
         </div>
